@@ -94,11 +94,15 @@ cd server
 npm install
 ```
 
-Create a `.env` file in `server/`:
+Copy `server/.env.example` to `server/.env` and fill in your own values:
 
 ```
 PORT=5000
 MONGODB_URL=<your MongoDB connection string>
+DOMAIN=http://localhost:3000
+WOOCOMMERCE_URL=<your WooCommerce store URL>
+WOOCOMMERCE_CONSUMER_KEY=<your WooCommerce consumer key>
+WOOCOMMERCE_CONSUMER_SECRET=<your WooCommerce consumer secret>
 ```
 
 ```bash
@@ -114,7 +118,3 @@ npm start
 ```
 
 The client expects the API base URL and WooCommerce/Algolia/MSAL credentials to be configured in `client/src/api/api-routes.js` and `client/src/authConfig.js` respectively.
-
-## Security Note
-
-This repository currently has real credentials committed to source control (`server/.env` and the WooCommerce API keys in `server/config/wooCommerceApi.js`), and `node_modules` is checked into git. Before making this repository public, rotate those credentials, move them to environment variables / deployment secrets, and remove them (and `node_modules`) from git history.
